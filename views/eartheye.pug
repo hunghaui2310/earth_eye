@@ -1,0 +1,150 @@
+extends layout
+
+block content
+
+    script(type='text/javascript', src='/javascripts/draw.control.js')
+    //- script(type='text/javascript', src='/javascripts/markerclustererplus.min.js')
+    script(type='text/javascript', src='/javascripts/tokml.js')
+    script(type='text/javascript').
+        $(function() {
+            g_oMyInfo = !{data};
+            g_oMyInfo.set_imagery_provider = JSON.parse(g_oMyInfo.set_imagery_provider);
+            g_oMyInfo.set_detection_models = JSON.parse(g_oMyInfo.set_detection_models);
+
+            var s = $('<script />')
+                .attr({
+                    type: 'text/javascript',
+                    src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDzHkDwe5kpfG7pC0F47p7PC4aeGP7TlEY&libraries=drawing,places&callback=initEartheye'
+                });
+
+            window.initEartheye = function() {
+                initMap();
+                initAoiNotice();
+                initAoiBox();
+                initSearch();
+            }
+
+            $('head').append(s);
+        });
+
+    #framebox
+        div(class='main-sidebar slidebox')
+            button(class='btn_aoi', data-btitle='Area of interest')
+
+        .aoi-notice
+            .hand
+                img(src='/images/icon_notice_hand.png', height='68', alt='hand')
+            .msgbox
+                .close
+                    button(class='btn_close')
+                .title Set the detection areas.
+                .content
+                    input(type='checkbox', name='aoinotice', id='aoinotice')
+                    label(for='aoinotice') Don't look again
+
+        //- .slide-overlay
+
+        .sub-sidebar-area
+            .aoiwrapper
+                .aoibox
+                    .titlebar
+                        .close
+                            button(class='btn_close')
+                        .title AOI(Area of interest)
+
+                    .searchbar
+                        .text
+                            input(type='text', name='keyword', placeholder='AOI Search', autocomplete='off')
+                        .btn
+                            button(class='btn_cancelinput')
+                            button(class='btn_search')
+
+                    .infobar
+                        .text
+                            span(class='item-count') 0
+                            span &nbsp; items
+                        .btn
+                            button(class='btn_trash', data-mode='list')
+
+                    .listbox
+                        .msg Set the detection areas.
+
+                    .btmbox
+                        .btn
+                            button(class='btn_common_t2 btn_addarea') + Add area
+
+                    .btmbox2
+                        button(class='btn_common_r2 btn_delete') ALL DELETE
+
+                .aoiformbox
+                    .titlebar
+                        .back
+                            button(class='btn_back')
+                        .title New AOI
+                    .formbar
+                        .formrow
+                            .title Draw type
+                            .content
+                                table(width='100%', border='0', cellspacing='0', cellpadding='0')
+                                    tr(align='center')
+                                        td
+                                            button(class='btn_draw_c btn_draw', data-type='C')
+                                        td
+                                            button(class='btn_draw_r btn_draw', data-type='R')
+                                        td
+                                            button(class='btn_draw_p btn_draw', data-type='P')
+                                        td
+                                            button(class='btn_draw_j off btn_draw', data-type='J')
+                                        td
+                                            button(class='btn_draw_x off btn_draw', data-type='X')
+
+                        .formrow
+                            .title Name
+                            .content
+                                input(type='text', name='aoi_title', maxlength='50')
+
+                        .formrow
+                            .title Description
+                            .content
+                                textarea(name='aoi_desc', wrap='virtual')
+
+                        .formrow2
+                            .half
+                                .title Latitude
+                                .content
+                                    span(class='aoi_lat') 0
+                            .half
+                                .title Longitude
+                                .content
+                                    span(class='aoi_lng') 0
+
+                        .formrow2
+                            .title Area
+                            .content
+                                span(class='aoi_area')
+                                span &nbsp;㎢
+
+                        .btn
+                            button(class='btn_common_t2 btn_aoihistory') Select area detection history
+
+                    .btmbox
+                        input(type='hidden', name='aoi_idx', value='0')
+                        input(type='hidden', name='aoi_coord')
+                        input(type='hidden', name='aoi_sw_latlng')
+                        input(type='hidden', name='aoi_ne_latlng')
+                        button(class='btn_common_r2 btn_delete', style='display: none;') DELETE
+                        button(class='btn_common_r1 btn_save') SAVE
+
+            //- div(class='actionbar slidebox')
+            //-     button(class='btn_act_od btn_actions', data-action='O' data-btitle='Object Detection')
+            //-     button(class='btn_act_bt btn_actions', data-action='B' data-btitle='Segmentation')
+            //-     button(class='btn_act_cd btn_actions', data-action='C' data-btitle='Change Detection')
+            //-     button(class='btn_act_tl btn_actions', data-action='T' data-btitle='Time Lapse')
+            //-     .detailbar-wrapper
+            //-         .detailbar
+
+        #mapview
+            #mapview-wrapper
+                #mapview-main
+                #mapview-sub
+                iframe(id='sizeframe')

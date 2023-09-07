@@ -1,0 +1,104 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='initial-scale=1,maximum-scale=1,user-scalable=no')
+    link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+    link(rel='stylesheet', href='/stylesheets/common.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/selectric.css')
+    script(type='text/javascript', src='/javascripts/jquery-3.1.1.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.selectric.min.js')
+    script(type='text/javascript', src='/javascripts/jquery-ui.min.js')
+    script(type='text/javascript', src='/javascripts/jquery.custom.js')
+    script(type='text/javascript', src='/javascripts/contents.language.js')
+    script(type='text/javascript', src='/javascripts/common.js')
+    script(type='text/javascript', src='/javascripts/ui.control.js')
+
+    script(type='text/javascript').
+        $(function() {
+            $('.selectricbox').selectric({
+                onChange: function() {
+                    var cname = $(this).find(':selected').attr('class');
+                    cname = (typeof cname == 'undefined') ? '' : cname;
+                    var t = $('.selectric-selectmbox .label');
+
+                    if(cname.indexOf('-goto') != -1) {
+                        location.href = '/admin';
+                    } else if (cname.indexOf('-logout') != -1) {
+                        //t.css('background-image', 'url(/images/icon_logout.svg');
+                        location.href = '/signout';
+                    } else if (cname.indexOf('-setting') != -1) {
+                        //t.css('background-image', 'url(/images/icon_Setting.svg');
+                        openMemberInfoBox(#{sid});
+                        $(this).prop('selectedIndex', 0).selectric('refresh');
+                        $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+
+                    }
+
+                    if(cname != '') {
+                        t.html($(this).find('option:first').text());
+                    }
+
+                    if($(this).attr('name') == 'uilang') {
+                        var code = $(this).val();
+                        $.cookie('langcode', code);
+                        self.location.reload();
+                    }
+                }
+            });
+
+            $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+
+            $('.gnb_signbtn').on('click touchstart', function() {
+                $('input[name=uid]').focus();
+            });
+        });
+
+  if sid
+    script(type='text/javascript').
+        $(function() {
+            $('select[name=member] .b-icon-goto').text(g_oLang.common.button.goto_admin[g_sLangCode]);
+            $('select[name=member] .b-icon-logout').text(g_oLang.common.button.logout[g_sLangCode]);
+            $('select[name=member] .b-icon-setting').text(g_oLang.common.button.setting[g_sLangCode]);
+            $('.selectricbox').selectric('refresh');
+            $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+        });
+
+
+  body
+    #header
+        #gnb_logo
+            a(href='/')
+                img(src='/images/gnb_logo.png', height='48', alt='eartheye logo')
+
+        if sid
+            #gnb_search
+                .inputbox
+                    input(type='text', name='search_location', placeholder='Area search')
+                .btn
+                    button(class='btn_cancelinput')
+                    button(class='btn_search')
+                .resultarea
+
+            #gnb_member
+                  select(name='member', class='selectricbox selectmbox')
+                      option(value='info', class='b-icon-profile') #{sname}
+                      if slv && slv < 3
+                          option(value='admin', class='b-icon-goto') Goto Admin
+                      option(value='logout', class='b-icon-logout') Logout
+                      option(value='setting', class='b-icon-setting') Setting
+        else
+            #gnb_signin
+                button(class='gnb_signbtn')
+                    span(class='ee-icon ee-icon-signin')
+                    span(class='text') Sign in
+
+
+        #gnb_lang
+            select(name='uilang', class='selectricbox')
+                option(value='en') EN
+                option(value='ko') KO
+
+    #body_content
+        block content

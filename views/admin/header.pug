@@ -1,0 +1,138 @@
+doctype html
+html
+    head
+        title= title
+        meta(name='viewport', content='initial-scale=1,maximum-scale=1,user-scalable=no')
+        link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+        link(rel='stylesheet', href='/stylesheets/common.css')
+        link(rel='stylesheet', href='/stylesheets/admin.css')
+        link(rel='stylesheet', href='/stylesheets/selectric.css')
+        script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDzHkDwe5kpfG7pC0F47p7PC4aeGP7TlEY-01C8MY&libraries=drawing,places')
+        script(type='text/javascript', src='/javascripts/jquery-3.1.1.min.js')
+        script(type='text/javascript', src='/javascripts/jquery.selectric.min.js')
+        script(type='text/javascript', src='/javascripts/jquery-ui.min.js')
+        script(type='text/javascript', src='/javascripts/jquery.custom.js')
+        script(type='text/javascript', src='/javascripts/contents.language.js')
+        script(type='text/javascript', src='/javascripts/common.js')
+        script(type='text/javascript', src='/javascripts/draw.control.js')
+        script(type='text/javascript', src='/javascripts/ui.control.js')
+        script(type='text/javascript', src='/javascripts/ui.am.control.js')
+
+        script(type='text/javascript').
+            $(function() {
+                $('.selectricbox').selectric({
+                    onChange: function() {
+                        var cname = $(this).find(':selected').attr('class');
+                        cname = (typeof cname == 'undefined') ? '' : cname;
+                        var t = $('.selectric-selectmbox .label');
+
+                        if(cname.indexOf('-goto') != -1) {
+                            $(this).prop('selectedIndex', 0).selectric('refresh');
+                            $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+                            location.href = '/eartheye';
+                        } else if (cname.indexOf('-logout') != -1) {
+                            //t.css('background-image', 'url(/images/icon_logout.svg');
+                            location.href = '/admin/signout';
+                        } else if (cname.indexOf('-setting') != -1) {
+                            //t.css('background-image', 'url(/images/icon_Setting.svg');
+                            openMemberInfoBox(#{sid});
+                            $(this).prop('selectedIndex', 0).selectric('refresh');
+                            $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+                        }
+
+                        if(cname != '') {
+                            t.html($(this).find('option:first').text());
+                        }
+
+                        if($(this).attr('name') == 'uilang') {
+                            var code = $(this).val();
+                            $.cookie('langcode', code);
+                            self.location.reload();
+                        }
+                    }
+                });
+
+                $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+
+                $('.gnb_signbtn').on('click touchstart', function() {
+                    $('input[name=uid]').focus();
+                });
+            });
+
+    if sid
+        script(type='text/javascript').
+            $(function() {
+                let path = window.location.pathname;
+                let gm = $('#gnb_menu');
+                let fb = $('#framebox');
+                let pageloc = '<img src="/images/icon_home.svg" width="15" alt="'+ g_oLang.common.title.home[g_sLangCode] +'" /> &nbsp; ';
+
+                $('select[name=member] .b-icon-goto').text(g_oLang.common.button.goto_service[g_sLangCode]);
+                $('select[name=member] .b-icon-logout').text(g_oLang.common.button.logout[g_sLangCode]);
+                $('select[name=member] .b-icon-setting').text(g_oLang.common.button.setting[g_sLangCode]);
+                $('.selectricbox').selectric('refresh');
+                $('.selectric-selectmbox .selectric-scroll li[data-index=0]').hide();
+
+                gm.find('li[data-id=member]').text(g_oLang.common.title.admin_member[g_sLangCode]);
+                gm.find('li[data-id=object]').text(g_oLang.common.title.admin_object[g_sLangCode]);
+                gm.find('li[data-id=status]').text(g_oLang.common.title.admin_status[g_sLangCode]);
+
+                if(path.indexOf('/member') != -1) {
+                    gm.find('li[data-id=member]').addClass('on');
+                    fb.find('.toparea .title .text').text(g_oLang.common.title.admin_member[g_sLangCode]);
+                    pageloc += ' ▸&nbsp; '+ g_oLang.common.title.admin_member[g_sLangCode];
+                } else if (path.indexOf('/mdetail') != -1) {
+                    gm.find('li[data-id=member]').addClass('on');
+                    fb.find('.toparea .title .text').text(g_oLang.common.title.admin_detail[g_sLangCode]);
+                    pageloc += ' ▸&nbsp; '+ g_oLang.common.title.admin_member[g_sLangCode] +' &nbsp;▸&nbsp; '+ g_oLang.common.title.admin_detail[g_sLangCode];
+                } else if(path.indexOf('/object') != -1) {
+                    gm.find('li[data-id=object]').addClass('on');
+                    fb.find('.toparea .title .text').text(g_oLang.common.title.admin_object[g_sLangCode]);
+                    pageloc += ' ▸&nbsp; '+ g_oLang.common.title.admin_object[g_sLangCode];
+                } else if(path.indexOf('/status') != -1) {
+                    gm.find('li[data-id=status]').addClass('on');
+                    fb.find('.toparea .title .text').text(g_oLang.common.title.admin_status[g_sLangCode]);
+                    pageloc += ' ▸&nbsp; '+ g_oLang.common.title.admin_status[g_sLangCode];
+                }
+
+                fb.find('.toparea .location').html(pageloc);
+
+                gm.find('li').on('click', function() {
+                    let id = $(this).attr('data-id');
+                    location.href = '/admin/'+ id;
+                });
+            });
+
+
+    body
+        #header
+            #gnb_logo
+                img(src='/images/gnb_logo.png', height='48', alt='eartheye logo')
+
+            if sid
+                #gnb_menu
+                    ul
+                        li(data-id='member') Members
+                        li(data-id='object') Objects
+                        li(data-id='status') Status of use
+
+                #gnb_member
+                    select(name='member', class='selectricbox selectmbox')
+                        option(value='info', class='b-icon-profile') #{sname}
+                        option(value='service', class='b-icon-goto') Goto Service
+                        option(value='logout', class='b-icon-logout') Logout
+                        option(value='setting', class='b-icon-setting') Setting
+            else
+                #gnb_signin
+                    button(class='gnb_signbtn')
+                        span(class='ee-icon ee-icon-signin')
+                        span(class='text') Sign in
+
+
+            #gnb_lang
+                select(name='uilang', class='selectricbox')
+                    option(value='en') EN
+                    option(value='ko') KO
+
+        #body_content
+            block content

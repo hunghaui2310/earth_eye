@@ -1,0 +1,19 @@
+extends header
+
+block content
+    script(type='text/javascript').
+        $(function() {
+            let detail = !{data};
+            g_iMemberLevel = !{slv};
+            initMemberDetail(detail);
+        });
+
+    #framebox
+        .toparea
+            .center-wrapper
+                .location
+                .title
+                    .text
+
+        .bodyarea
+            .center-wrapper

@@ -1,0 +1,48 @@
+extends layout
+
+block content
+    script(type='text/javascript').
+        $(function() {
+            let ran = Math.round(Math.random() * 1);
+
+            if(ran) {
+                initStarfield();
+            } else {
+                initShoothingStar();
+            }
+
+            initSinginForm();
+        });
+
+    #starfield
+        #s_stars
+        #m_stars
+        #b_stars
+
+    canvas(id='starcanvas')
+
+    #loginfield
+        .dialog
+            .logo-area
+                div
+                    .animate-logo
+                        .fixed
+                        .circle
+                div(style='margin-top: 15px;')
+                    img(src='/images/eartheye_logo_text.svg', width='200')
+
+            .form-area
+                .form-box
+                    .title ID
+                    .content
+                        input(type='text', name='uid', placeholder='Please enter ID', autocomplete='off')
+                .form-box
+                    .title PASSWORD
+                    .content
+                        input(type='password', name='upw', placeholder='Please enter Password')
+
+                .btn-box
+                    button(class='btn_common_r1 btn_login') Login
+
+            .btm-area
+                a Contact Us

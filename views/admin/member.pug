@@ -1,0 +1,45 @@
+extends header
+
+block content
+    script(type='text/javascript').
+        $(function() {
+            initSearchForm('M');
+            loadMemberList({
+                page: $.cookie('before_page'),
+                search_type: $.cookie('before_type'),
+                search_word: $.cookie('before_word')
+            });
+
+            $('#framebox .btn_addmember').on('click', function() {
+                $.cookie('before_page', 1);
+                $.cookie('before_type', '');
+                $.cookie('before_word', '');
+
+                location.href = '/admin/mdetail/0';
+            });
+        });
+
+    #framebox
+        .toparea
+            .center-wrapper
+                .location
+                .title
+                    .text
+                    .btn
+                        button(class='btn_common_t2 btn_addmember') +
+                            img(src='/images/icon_profile_hover.svg', width='19', alt='Member Icon')
+
+        .bodyarea
+            .center-wrapper
+                .searcharea
+                    .type
+                        select(name='search_type', class='searchtype')
+                    .inputbox
+                        input(type='text', name='search_word')
+                        .btn
+                            button(class='btn_cancelinput')
+                            button(class='btn_search')
+
+                .listarea
+
+                .pagearea

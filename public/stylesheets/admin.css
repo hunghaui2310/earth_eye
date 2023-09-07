@@ -1,0 +1,602 @@
+#loginfield .dialog .logo-area {
+    padding-top: 50px;
+    margin-bottom: 40px;
+}
+
+#loginfield .dialog .logo-area .sub {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: #fff;
+    word-spacing: 14px;
+}
+
+#gnb_menu {
+    position: absolute;
+    top: 0;
+    right: 300px;
+    bottom: 0;
+}
+
+#gnb_menu ul, #gnb_menu li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#gnb_menu li {
+    float: left;
+    width: 170px;
+    height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #72829d;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+}
+
+#gnb_menu li.on, #gnb_menu li:hover {
+    color: #fff;
+    background-image: -webkit-linear-gradient(#20232d 0%, #0e1013 100%);
+    background-image: -moz-linear-gradient(#20232d 0%, #0e1013 100%);
+    background-image: -o-linear-gradient(#20232d 0%, #0e1013 100%);
+    background-image: linear-gradient(#20232d 0%, #0e1013 100%);
+    border-bottom: 1px solid #fff;
+}
+
+#body_content {
+    background-image: -webkit-linear-gradient(#2f3646 0%, #283143 100%);
+    background-image: -moz-linear-gradient(#2f3646 0%, #283143 100%);
+    background-image: -o-linear-gradient(#2f3646 0%, #283143 100%);
+    background-image: linear-gradient(#2f3646 0%, #283143 100%);
+}
+
+.center-wrapper {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+#framebox {
+    overflow: auto;
+}
+
+#framebox .toparea {
+    width: 100%;
+    height: 90px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.16);
+    z-index: 1;
+}
+
+#framebox .toparea .location {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    font-size: 11px;
+    font-family: 'Noto Sans';
+    color: #72829d;
+    display: flex;
+}
+
+#framebox .toparea .title {
+    padding: 40px 0 0 20px;
+    font-size: 30px;
+    font-family: 'Noto Sans';
+    color: #6899eb;
+    display: flex;
+    align-items: center;
+}
+
+#framebox .toparea .title .text {
+    display: inline-block;
+    line-height: 42px;
+}
+
+#framebox .toparea .title .btn {
+    display: inline-block;
+    margin-left: 15px;
+    width: 48px;
+}
+
+#framebox .toparea .title .btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#framebox .bodyarea .searcharea {
+    margin: 30px 20px 20px 20px;
+}
+
+#framebox .bodyarea .searcharea .type {
+    display: inline-block;
+    width: 150px;
+    vertical-align: middle;
+}
+
+#framebox .bodyarea .searcharea .inputbox {
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    width: 320px;
+    height: 38px;
+    border-bottom: 1px solid #47546a;
+    background: #283041;
+    vertical-align: middle;
+}
+
+#framebox .bodyarea .searcharea .inputbox input {
+    width: 100%;
+    margin: 0;
+    padding: 6px 68px 6px 12px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    background: transparent;
+    border: 0;
+}
+#framebox .bodyarea .searcharea .inputbox input::placeholder {
+    color: #72829d;
+}
+#framebox .bodyarea .searcharea .inputbox:hover {
+    border-bottom: 1px solid #6899eb;
+}
+
+#framebox .bodyarea .searcharea .btn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+#framebox .bodyarea .searcharea .btn .btn_cancelinput {
+    display: none;
+    position: absolute;
+    top: 7px;
+    left: -24px;
+}
+
+#framebox .bodyarea .selectric {
+    background: #2f3646;
+    border: 1px solid #47546a;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+    z-index: 1;
+}
+#framebox .bodyarea .selectric-open .selectric {
+    background: #0e1013;
+    border: 1px solid transparent;
+}
+#framebox .bodyarea .selectric .label {
+    height: 36px;
+    line-height: 36px;
+}
+#framebox .bodyarea .selectric .button {
+    height: 36px;
+}
+#framebox .bodyarea .selectric-items {
+    z-index: 2;
+}
+#framebox .bodyarea .selectric-items ul,
+#framebox .bodyarea .selectric-items li {
+    min-height: 38px;
+    line-height: 38px;
+}
+
+#framebox .bodyarea .listarea {
+    padding: 0 20px;
+}
+
+#framebox .bodyarea .listarea thead td {
+    height: 60px;
+    text-align: center;
+    word-break: break-word;
+    background: #20232d;
+    font-size: 15px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    line-height: 17px;
+}
+
+#framebox .bodyarea .listarea tbody td {
+    height: 51px;
+    text-align: center;
+    word-break: break-word;
+    font-size: 13px;
+    font-family: 'Noto Sans';
+    color: #bababa;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid #47546a;
+    cursor: default;
+}
+
+#framebox .bodyarea .listarea tbody .info {
+    color: #fff;
+    cursor: pointer;
+}
+#framebox .bodyarea .listarea tbody .info:hover {
+    color: #6899eb;
+}
+
+#framebox .bodyarea .listarea tbody .left {
+    text-align: left;
+}
+
+#framebox .bodyarea .listarea tbody .notfound {
+    height: 250px;
+}
+
+#framebox .bodyarea .listarea tbody .btn_common_t2 {
+    width: 96%;
+    height: 32px;
+    font-size: 14px !important;
+}
+
+#framebox .bodyarea .pagearea {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#framebox .bodyarea .standard {
+    padding: 20px 20px 30px 20px;
+}
+
+#framebox .bodyarea .standard .select-wrapper {
+    display: inline-block;
+    width: 150px;
+}
+
+#framebox .bodyarea .standard table td {
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #999;
+}
+
+.commentbox {
+    display: inline-flex;
+    width: 100%;
+    height: 38px;
+    margin: 0;
+    padding: 0 15px;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #d8dadc;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #47546a;
+    align-items: center;
+    cursor: default;
+}
+
+#framebox .bodyarea .standard .commentbox {
+    width: calc(100% - 155px);
+    width: -moz-calc(100% - 155px);
+    width: -webkit-calc(100% - 155px);
+}
+
+#framebox .bodyarea .standard .btn_changepass {
+    display: inline-block;
+    width: 140px;
+    height: 32px;
+    padding-top: 2px;
+    margin-left: 10px;
+    font-size: 14px !important;
+    font-family: 'Noto Sans' !important;
+}
+
+#framebox .bodyarea .standard .tablep {
+    vertical-align: top;
+}
+
+#framebox .bodyarea .standard .tablep td {
+    padding-top: 10px;
+}
+
+#framebox .bodyarea [type="radio"]:not(:checked) + label:after,
+#framebox .bodyarea [type="radio"]:checked + label:after,
+#framebox .bodyarea [type="checkbox"]:not(:checked) + label:after,
+#framebox .bodyarea [type="checkbox"]:checked + label:after {
+    color: #fff;
+}
+
+#framebox .bodyarea .box.O [type="radio"]:not(:checked) + label:after,
+#framebox .bodyarea .box.O [type="radio"]:checked + label:after,
+#framebox .bodyarea .box.O [type="checkbox"]:not(:checked) + label:after,
+#framebox .bodyarea .box.O [type="checkbox"]:checked + label:after {
+    color: #ff00f5;
+}
+#framebox .bodyarea .box.B [type="radio"]:not(:checked) + label:after,
+#framebox .bodyarea .box.B [type="radio"]:checked + label:after,
+#framebox .bodyarea .box.B [type="checkbox"]:not(:checked) + label:after,
+#framebox .bodyarea .box.B [type="checkbox"]:checked + label:after {
+    color: #00ffff;
+}
+#framebox .bodyarea .box.C [type="radio"]:not(:checked) + label:after,
+#framebox .bodyarea .box.C [type="radio"]:checked + label:after,
+#framebox .bodyarea .box.C [type="checkbox"]:not(:checked) + label:after,
+#framebox .bodyarea .box.C [type="checkbox"]:checked + label:after {
+    color: #1ee85c;
+}
+
+#framebox .bodyarea .formbox {
+    background: #2f3646;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #272f40;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+    z-index: 1;
+}
+
+#framebox .bodyarea .formbox .titlebar {
+    font-size: 20px;
+    font-family: 'Noto Sans';
+    color: #6899eb;
+    height: 50px;
+}
+
+#framebox .bodyarea .formbox .titlebar button {
+    width: 140px;
+    margin-left: 10px;
+}
+
+#framebox .bodyarea .formbox .titlebar .option {
+    display: inline-block;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #999;
+}
+
+
+#framebox .bodyarea .formbox .box {
+    display: inline-block;
+    width: calc(33.3% - 16px);
+    width: -moz-calc(33.3% - 16px);
+    width: -webkit-calc(33.3% - 16px);
+    border: 1px solid #47546a;
+    margin-right: 20px;
+}
+#framebox .bodyarea .formbox .box:last-child {
+    margin-right: 0;
+}
+
+#framebox .bodyarea .formbox .box .box-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 41px;
+    padding-left: 20px;
+    font-size: 14px !important;
+    font-family: 'Noto Sans' !important;
+    color: #f5f5f5 !important;
+    background: #47546a;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+    z-index: 2;
+}
+
+#framebox .bodyarea .formbox .box .box-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: auto;
+    background: #283041;
+    z-index: 1;
+}
+
+#framebox .bodyarea .formbox .box .box-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding-left: 40px;
+    font-size: 14px !important;
+    font-family: 'Noto Sans' !important;
+    color: #9b9b9b !important;
+    border-bottom: 1px solid #465469;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+#framebox .bodyarea .formbox .box .box-item:hover,
+#framebox .bodyarea .formbox .box .box-item.on {
+    background: #20232d;
+}
+
+#framebox .bodyarea .formbox .arealist-box {
+    padding-top: 13px;
+}
+
+#framebox .bodyarea .formbox .arealist-box thead td {
+    height: 60px;
+    background: #20232d;
+    font-size: 15px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    text-align: center;
+}
+
+#framebox .bodyarea .formbox .arealist-box tbody td {
+    height: 52px;
+    border-bottom: 1px solid #47546a;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #d8dadc;
+    text-align: center;
+}
+
+#framebox .bodyarea .formbox .arealist-box tbody td .btn_viewarea {
+    width: 96%;
+    height: 32px;
+    font-size: 14px !important;
+}
+
+#framebox .bodyarea .btnbox {
+    padding: 50px 0 60px 0;
+    text-align: center;
+}
+
+#framebox .bodyarea .btnbox button {
+    width: 320px !important;
+    margin: 0 5px;
+}
+
+#add-detection-areabox .inbox {
+    padding: 10px 25px 20px 25px;
+}
+
+#add-detection-areabox .inbox td {
+    height: 38px;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #999;
+}
+
+#add-detection-areabox .inbox .btnbox {
+    padding-top: 30px;
+    text-align: center;
+}
+
+#add-detection-areabox .inbox .btnbox button {
+    width: 200px !important;
+    margin: 0 5px;
+    padding-top: 2px;
+}
+
+#add-detection-areabox .searchbox {
+    position: relative;
+    padding: 0;
+    width: 360px;
+    height: 38px;
+}
+
+#add-detection-areabox .searchbox input {
+    margin: 0;
+    padding: 6px 68px 6px 12px;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    background: #283041;
+    border: 0;
+    border-bottom: 1px solid #47546a;
+}
+#add-detection-areabox .searchbox input::placeholder {
+    color: #72829d;
+}
+#add-detection-areabox .searchbox input:hover {
+    border-bottom: 1px solid #6899eb;
+}
+
+#add-detection-areabox .searchbox .btn {
+    position: absolute;
+    top: 0;
+    right: 6px;
+}
+
+#add-detection-areabox .searchbox .btn .btn_cancelinput {
+    display: none;
+    position: absolute;
+    top: 7px;
+    left: -24px;
+}
+
+#area-mapview {
+    width: 100%;
+    height: 450px;
+}
+
+#area-mapview .zoomcontrolbar {
+    margin: 10px 10px 10px 0;
+}
+
+#add-detection-areabox .inbox .desc {
+    padding: 10px 0;
+    font-size: 11px;
+    color: #999;
+}
+
+#add-detection-areabox .inbox .hlight {
+    background: #272d39;
+    color: #d8dadc;
+    text-align: center;
+}
+
+
+.input-fit {
+    width: 100%;
+    height: 38px;
+    margin: 0;
+    padding: 6px 15px;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    background: #283041;
+    border: 0;
+    border-bottom: 1px solid #47546a;
+}
+.input-fit::placeholder {
+    color: #72829d;
+}
+.input-fit:hover {
+    border-bottom: 1px solid #6899eb;
+}
+.input-fit:disabled {
+    background: transparent;
+    color: #d8dadc;
+    border-bottom: 1px solid #47546a;
+    cursor: default;
+}
+
+.calinput {
+    width: 130px;
+    height: 38px;
+    margin: 0;
+    padding: 6px 15px 6px 40px;
+    font-size: 14px;
+    font-family: 'Noto Sans';
+    color: #fff;
+    background: #283041 url(/images/btn_calendar.svg) left 15px center no-repeat;
+    background-size: 16px 17px;
+    border: 0;
+    border-bottom: 1px solid #47546a;
+    cursor: pointer;
+}
+.calinput::placeholder {
+    color: #72829d;
+}
+.calinput:hover {
+    border-bottom: 1px solid #6899eb;
+    background-image: url(/images/btn_calendar_hover.svg);
+}
+.calinput:disabled {
+    background-color: transparent;
+    color: #d8dadc;
+    border-bottom: 1px solid #47546a;
+    background-image: url(/images/btn_calendar_dis.svg);
+    cursor: default;
+}
+
+
+.float-left {
+    display: inline-flex;
+    float: left;
+    align-items: center;
+    height: 38px;
+}
+
+.float-right {
+    display: inline-flex;
+    float: right;
+    align-items: center;
+    height: 38px;
+}
+
+.ui-datepicker {
+    z-index: 10 !important;
+}
