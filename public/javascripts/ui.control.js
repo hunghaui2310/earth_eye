@@ -433,7 +433,7 @@ function searchFoundAction(_idx) {
     let a = $('#framebox .aoiformbox');
     let o = $('#framebox .aoibox');
 
-    if($('#framebox .btn_aoi').hasClass('on')) {
+    if($('#framebox .div_aoi').hasClass('on')) {
         if(g_sAoiMode == 'MODIFY') {
             g_sAoiMode = 'DETAIL';
             a.find('.btn_back').trigger('click');
@@ -454,7 +454,7 @@ function searchFoundAction(_idx) {
             }
         }
     } else {
-        $('#framebox .btn_aoi').trigger('click');
+        $('#framebox .div_aoi').trigger('click');
         setTimeout(function() {
             o.find('.aoilistbox[data-idx='+ _idx +'] .aoiname').trigger('click');
         }, 320);
@@ -475,7 +475,7 @@ function searchNotFoundAction() {
     };
 
     r.find('.btn_add').unbind('click').on('click', function() {
-        if($('#framebox .btn_aoi').hasClass('on')) {
+        if($('#framebox .div_aoi').hasClass('on')) {
             if(g_sAoiMode == 'MODIFY') {
                 g_sAoiMode = 'DETAIL';
                 a.find('.btn_back').trigger('click');
@@ -493,7 +493,7 @@ function searchNotFoundAction() {
                 }
             }
         } else {
-            $('#framebox .btn_aoi').trigger('click');
+            $('#framebox .div_aoi').trigger('click');
             setTimeout(function() {
                 resetAdd();
             }, 280);
@@ -569,7 +569,7 @@ function getTileProviders() {
 function initAoiBox() {
     let d = $('#framebox .detailbar');
 
-    $('#framebox .btn_aoi, #framebox .actionbar button').bTooltip({
+    $('#framebox .div_aoi, #framebox .actionbar button').bTooltip({
         textColor: '#eee',
         textSize: '12px',
         boxColor: '#283041',
@@ -577,9 +577,8 @@ function initAoiBox() {
         boxPadding: '5px 12px'
     });
 
-    $('#framebox .btn_aoi').on('click', function() {
+    $('#framebox .slidebox').on('click', function() {
         var me = $(this);
-
         if(!g_oTileProviders.length) {
             getTileProviders();
             return false;
@@ -587,7 +586,6 @@ function initAoiBox() {
 
         $('#framebox .aoi-notice').fadeOut(250).hide();
         $('#framebox .slide-overlay').fadeOut(250).hide();
-
         checkSaveDetectionResult(me, function() {
             if (!me.hasClass('on')) {
                 me.addClass('on');
@@ -1251,7 +1249,7 @@ function refreshAoiDataOnMap() {
             me.find('.preview-map').hide();
         }).on('click', function() {
             let idx = $(this).attr('data-idx');
-            $('#framebox .btn_aoi').trigger('click');
+            $('#framebox .div_aoi').trigger('click');
             setTimeout(function() {
                 $('#framebox .aoilistbox[data-idx='+ idx +'] .aoiname').trigger('click');
             }, 250);
@@ -3341,6 +3339,8 @@ function setActionProgressMessage(_msg) {
 }
 
 function openAoiBox() {
+    const b = $('#framebox .div_aoi');
+    const c = $('#framebox .slidebox');
     let w = $('#framebox .aoiwrapper');
     let o = $('#framebox .aoibox');
     let a = $('#framebox .actionbar');
@@ -3353,6 +3353,10 @@ function openAoiBox() {
     var s = parseInt(m.css('left')) + o.width() - parseInt(a.width());
 
     w.animate({ left: 0 }, 200);
+
+    b.remove();
+    const btnAoi = $('<button class="btn_aoi on" data-btitle="IDF"></button>');
+    btnAoi.appendTo(c);
 
     if(a.hasClass('open') && !parseInt(a.css('left'))) {
         a.animate({ left: o.width() + 'px' }, 150);
@@ -3589,6 +3593,8 @@ function resetAoiForm(_idx) {
 }
 
 function closeAoiBox(_status) {
+    const b = $('#framebox .btn_aoi');
+    const c = $('#framebox .slidebox');
     let w = $('#framebox .aoiwrapper');
     let o = $('#framebox .aoibox');
     let a = $('#framebox .actionbar');
@@ -3604,7 +3610,11 @@ function closeAoiBox(_status) {
         $('#framebox .slide-overlay').fadeIn(250).show();
     }
 
-    $('#framebox .btn_aoi').removeClass('on');
+    b.remove();
+    const divAoi = $('<div class="div_aoi" data-btitle="IDF">IDF</div>');
+    divAoi.appendTo(c);
+
+    $('#framebox .slidebox').removeClass('on');
 }
 
 function noticeAnimate() {

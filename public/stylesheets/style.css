@@ -293,17 +293,18 @@ body::after {
 #framebox .sub-sidebar-area .detailbar .titlebar {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 50px;
   background: #20232d;
   border: 2px solid #282f41;
 }
 
 #framebox .sub-sidebar-area .aoibox .close {
   position: absolute;
-  top: 9px;
+  top: 5px;
   right: 10px;
 }
 
+/* #framebox .sub-sidebar-area .aoibox .close */
 #framebox .sub-sidebar-area .aoiformbox .back {
   position: absolute;
   top: 9px;
@@ -313,7 +314,7 @@ body::after {
 #framebox .sub-sidebar-area .aoibox .title,
 #framebox .sub-sidebar-area .aoiformbox .titlebar .title,
 #framebox .sub-sidebar-area .detailbar .titlebar .title {
-  padding-top: 18px;
+  padding-top: 12px;
   width: 100%;
   font-size: 18px;
   color: #fff;
@@ -1467,20 +1468,34 @@ body::after {
   line-height: 11px;
 }
 
+.div_aoi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0px;
+  margin: 0;
+  border: 0;
+  color: white;
+  /* background-color: 'transparent' !important; */
+  background-size: 26px;
+  cursor: pointer;
+}
 
 .btn_aoi {
   width: 48px;
   height: 48px;
-  padding: 0;
+  padding: 0px;
   margin: 0;
   border: 0;
-  background: transparent url(/images/icon_aoi.svg) center no-repeat;
+  background: transparent url(/images/icon_Setting.svg) center no-repeat;
   background-size: 26px;
   cursor: pointer;
 }
 
 .btn_aoi:hover, .btn_aoi.on {
-  background-image: url(/images/icon_aoi_hover.svg);
+  /* background-image: url(/images/icon_aoi_hover.svg); */
 }
 
 .btn_act_od {
